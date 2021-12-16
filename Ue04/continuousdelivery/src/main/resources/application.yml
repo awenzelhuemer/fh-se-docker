@@ -1,0 +1,17 @@
+spring:
+    data:
+        rest:
+            base-path: /api
+    hateoas:
+        use-hal-as-default-json-media-type: true
+
+management:
+    endpoints:
+        enabled-by-default: true
+
+banner:
+  location: banner.txt
+
+server:
+    forward-headers-strategy: framework
+

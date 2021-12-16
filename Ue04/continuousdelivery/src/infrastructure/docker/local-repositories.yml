@@ -1,0 +1,15 @@
+#
+# Add local source repositories to master and agent.
+#
+# Adjust the host directory to fit local directory structure. This file is just an example.
+#
+version: '2.1'
+
+services:
+  master:
+    volumes:
+      - /Volumes/Disk/Development/spaces:/repositories
+
+  agent:
+    volumes:
+      - /Volumes/Disk/Development/spaces:/repositories

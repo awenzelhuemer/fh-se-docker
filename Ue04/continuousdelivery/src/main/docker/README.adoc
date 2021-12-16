@@ -1,0 +1,61 @@
+= README
+
+== Setup
+
+The compose project name is set as global variable, alternatively we can just add `--project-name continuousdelivery` to each compose command.
+
+[source,bash]
+----
+export COMPOSE_PROJECT_NAME=continuousdelivery
+----
+
+== Build
+
+A tag is required for building all artifacts including the Docker image.
+
+[source,bash]
+----
+: ${APP_TAG:=latest}
+export APP_TAG
+----
+
+Build is running the following tasks
+
+ * documentation tests,
+ * build Spring Boot JAR
+ * build Docker context (Dockerfile, docker-compose scripts)
+
+.Run tests and build the Docker context
+[source,bash]
+----
+./gradlew buildDockerContext
+----
+
+.Gradle cache
+----
+docker volume create --name=dot_gradle
+----
+
+.Build Application Image
+[source,bash]
+----
+export COMPOSE_PROJECT_NAME=continuousdelivery
+docker-compose build
+----
+
+== Run integration test
+
+This will startup a _production-like_ environment and run a suite of integration tests.
+
+IMPORTANT: Run this from project root (or set the `PROJECT_DIR` variable properly).
+
+[source,bash]
+----
+export COMPOSE_PROJECT_NAME=continuousdelivery
+export APP_TAG=latest
+export PROJECT_DIR=${PWD}
+# have to change to the directory containing the compose files, it also contains a .env file. TODO replace by values in the compose-file/exported variables
+cd build/docker
+docker-compose -f docker-compose.yml -f pipeline-integration-test.yml run --rm integration-test
+docker-compose -f docker-compose.yml -f pipeline-integration-test.yml down -v
+----
