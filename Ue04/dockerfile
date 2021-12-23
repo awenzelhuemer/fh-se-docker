@@ -1,0 +1,5 @@
+FROM adoptopenjdk/openjdk11:alpine-jre
+CMD ["java", "-jar", "/app.jar"]
+COPY continousdelievery.jar app.jar
+HEALTHCHECK --interval=5m --timeout=3s CMD curl -f http://localhost:8080/actuator/health || exit 1
+EXPOSE 8080
