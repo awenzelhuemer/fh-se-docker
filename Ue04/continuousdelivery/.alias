@@ -1,2 +1,0 @@
-alias gradlewd='docker run -ti --rm -v dot_gradle:/root/.gradle -v ${PWD}:/project --workdir=/project openjdk:8-jdk ./gradlew ${@}'
-alias gradlew=./gradlew ${@}

@@ -1,5 +1,0 @@
-== TODO
-
-https://github.com/opencontainers/image-spec/blob/master/annotations.md
-
-Multi Stage Build

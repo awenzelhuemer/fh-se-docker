@@ -1,0 +1,8 @@
+FROM adoptopenjdk/openjdk11:alpine-jre
+CMD ["java", "-jar", "/opt/app/app.jar"]
+COPY continousdelievery.jar /opt/app/app.jar
+
+EXPOSE 8080
+RUN apk update && apk --no-cache add curl && \
+rm -r /var/cache/apk/
+HEALTHCHECK CMD curl -f http://localhost:8080/actuator/health
