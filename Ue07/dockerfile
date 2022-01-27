@@ -1,0 +1,10 @@
+FROM adoptopenjdk/openjdk11:alpine AS builder 
+COPY continuousdelivery/ /project
+WORKDIR /project
+RUN ./gradlew build
+
+FROM adoptopenjdk/openjdk11:alpine-jre 
+LABEL maintainer='Andreas Wenzelhuemer <andreas.wenzelhuemer@gmail.com>'
+EXPOSE 8080
+CMD ["java", "-jar", "/opt/app/app.jar"]
+COPY --from=builder /project/build/libs/continuousdelivery.jar /opt/app/app.jar

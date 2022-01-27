@@ -1,7 +1,6 @@
 version: "3"
 services:
   app:
-    restart: always
     build:
       context: ./
     environment:
@@ -11,8 +10,8 @@ services:
       - SPRING_JPA_GENERATE_DDL
     depends_on:
       - postgresql
-  postgresql:
     restart: always
+  postgresql:
     image: bitnami/postgresql:11
     environment:
       - POSTGRESQL_USERNAME
@@ -20,5 +19,6 @@ services:
       - POSTGRESQL_DATABASE
     volumes:
       - postgresdb:/bitnami/postgresql
+    restart: always
 volumes:
   postgresdb:
