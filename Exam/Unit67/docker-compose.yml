@@ -1,0 +1,24 @@
+version: '3'
+services:
+  app:
+    build:
+      context: ./
+    restart: always
+    environment:
+      - SPRING_DATASOURCE_URL
+      - SPRING_DATASOURCE_USERNAME
+      - SPRING_DATASOURCE_PASSWORD
+      - SPRING_JPA_GENERATE_DDL
+    depends_on:
+      - postgresql
+  postgresql:
+    image: bitnami/postgresql:11
+    restart: always
+    environment:
+      - POSTGRESQL_USERNAME=${SPRING_DATASOURCE_USERNAME}
+      - POSTGRESQL_PASSWORD=${SPRING_DATASOURCE_PASSWORD}
+      - POSTGRESQL_DATABASE=${POSTGRESQL_DATABASE}
+    volumes:
+      - postgresdb:/bitnami/postgresql
+volumes:
+  postgresdb:
