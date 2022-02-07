@@ -1,6 +1,6 @@
-= Unit 2
+# Unit 2
 
-== Task 1
+## Task 1
 
 - Install alpine package curl
 
@@ -25,7 +25,7 @@ $ apk add curl
 $ exit | [str] + [c]
 ```
 
-== Task 2
+## Task 2
 
 - Commit container to image
 
@@ -33,7 +33,7 @@ $ exit | [str] + [c]
 docker container commit hello
 ```
 
-== Task 3
+## Task 3
 
 - Let’s give the image a new name
 

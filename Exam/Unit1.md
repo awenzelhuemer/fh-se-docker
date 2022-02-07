@@ -1,12 +1,12 @@
-= Unit 1
+# Unit 1
 
-== Task 1
+## Task 1
 
 - Starting a container
 
 `docker container run --rm --name hello alpine sh -c "echo Hello"`
 
-== Task 2
+## Task 2
 
 - How can we make the container we created visible?
 `docker container run --name hello alpine sh -c "echo Hello"`
@@ -21,7 +21,7 @@
 - How can we remove the container?
 `docker container rm hello`
 
-== Task 3
+## Task 3
 
 - Pull image
 `docker pull alpine:latest`
@@ -29,7 +29,7 @@
 - What did you notice during the pull, what exactly happened?
 Different layers get pu
 
-== Task 4
+## Task 4
 a
 - Create a container that is staying alive
 `docker container run -d --name hello alpine sh -c "while true; do sleep 10; echo 'Hello'; done"`
@@ -43,7 +43,7 @@ a
 - Display the running processes of the created hello container
 `docker container top hello`
 
-== Task 5
+## Task 5
 
 - Stop container
 `docker container stop hello`
